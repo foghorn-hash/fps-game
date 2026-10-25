@@ -1,0 +1,118 @@
+/**
+ * Dust & Lead - 3D Wild West FPS WordPress Styles
+ */
+
+.dust-and-lead-wrapper {
+  position: relative;
+  margin: 24px auto;
+  background: #1c120a;
+  border: 2px solid #825a38;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+  font-family: Georgia, 'Times New Roman', serif;
+  box-sizing: border-box;
+}
+
+.dust-and-lead-wrapper * {
+  box-sizing: border-box;
+}
+
+.dust-and-lead-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background: #25160d;
+  border-bottom: 1px solid #5a381e;
+  color: #f5ecd5;
+  font-size: 13px;
+}
+
+.dust-and-lead-badge {
+  background: #3d2414;
+  color: #d9a84e;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 3px 8px;
+  border-radius: 2px;
+  border: 1px solid #734825;
+  font-weight: bold;
+}
+
+.dust-and-lead-title {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #f5ecd5;
+}
+
+.dust-and-lead-fs-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #852b1e;
+  color: #fff2db;
+  border: 1px solid #d9834e;
+  padding: 4px 10px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  font-family: inherit;
+}
+
+.dust-and-lead-fs-btn:hover {
+  background: #a33525;
+}
+
+.dust-and-lead-fs-btn:active {
+  transform: translateY(1px);
+}
+
+.dust-and-lead-canvas-container {
+  width: 100%;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+
+.dust-and-lead-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.dust-and-lead-footer {
+  padding: 6px 14px;
+  background: #180f08;
+  border-top: 1px solid #361f10;
+  color: #c9ab86;
+  font-size: 11px;
+  font-family: monospace;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+/* Fullscreen mode */
+.dust-and-lead-wrapper:fullscreen,
+.dust-and-lead-wrapper:-webkit-full-screen {
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: none !important;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.dust-and-lead-wrapper:fullscreen .dust-and-lead-canvas-container,
+.dust-and-lead-wrapper:-webkit-full-screen .dust-and-lead-canvas-container {
+  flex: 1;
+  height: 100% !important;
+}

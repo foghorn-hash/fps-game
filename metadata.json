@@ -1,0 +1,6 @@
+{
+  "name": "Dust & Lead: 3D Wild West FPS",
+  "description": "An immersive 3D first-person shooter set in the rugged cowboy frontier with realistic rigid-body physics, procedural Western frontier town, classic revolvers and repeaters, destructible crates, and gunfight duels.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
