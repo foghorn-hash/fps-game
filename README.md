@@ -37,13 +37,20 @@ This repository includes both the modern TypeScript source code and a production
 
 ## 📦 WordPress Plugin Installation
 
-The plugin is bundled as a self-contained archive at `/wordpress-plugin/dust-and-lead-fps.zip`.
+The plugin is bundled as a self-contained archive at `/wordpress-plugin/dust-and-lead-fps.zip` and available for direct download:
+📥 **[Download dust-and-lead-fps.zip](https://ais-pre-ruptlmt33jwkbwccyp54dl-421769122930.europe-west2.run.app/dust-and-lead-fps.zip)**
 
 ### Method 1: WordPress Admin Upload (Recommended)
-1. In your WordPress admin panel, go to **Plugins** → **Add New**.
-2. Click **Upload Plugin** at the top of the page.
-3. Select `dust-and-lead-fps.zip` and click **Install Now**.
-4. Click **Activate Plugin**.
+1. Download `dust-and-lead-fps.zip` using the link above.
+2. In your WordPress admin panel, go to **Plugins** (**Lisäosat**) → **Add New** (**Lisää uusi**).
+3. If an older version is already installed, first deactivate and delete it (**Ota pois käytöstä** → **Poista**).
+4. Click **Upload Plugin** (**Lataa lisäosa**) at the top of the page.
+5. Select `dust-and-lead-fps.zip` and click **Install Now** (**Asenna nyt**).
+6. Click **Activate Plugin** (**Ota lisäosa käyttöön**).
+
+> **💡 Note on "404 Not Found" inside the iframe**:
+> On many WordPress hosting providers (e.g. Nginx or Apache security setups), direct access to static `.html` files located in `/wp-content/plugins/` is blocked or intercepted by WordPress's rewrite engine.
+> In **version 1.0.1**, the plugin automatically streams the game through WordPress's native `template_redirect` hook via `/?dust_and_lead_game=1`. This completely bypasses server-level static HTML blocks and injects full absolute plugin URLs for all CSS and JavaScript assets, guaranteeing it loads smoothly without 404 errors.
 
 ### Method 2: Manual FTP / Directory Installation
 1. Extract `dust-and-lead-fps.zip` (or copy the `/wordpress-plugin/dust-and-lead-fps/` directory).

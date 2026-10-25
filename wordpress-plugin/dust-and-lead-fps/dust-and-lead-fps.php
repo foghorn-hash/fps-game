@@ -47,6 +47,8 @@ class DustAndLeadFPS {
         // Standalone full-screen page rewrite rule
         add_action('init', array($this, 'add_rewrite_rules'));
         add_filter('query_vars', array($this, 'add_query_vars'));
+        // Register template redirect for direct game rendering (bypasses static HTML restrictions)
+        add_action('template_redirect', array($this, 'handle_game_request'), 1);
         add_action('template_include', array($this, 'template_redirect_game'));
 
         // Initialize Admin & REST API
@@ -111,16 +113,22 @@ class DustAndLeadFPS {
             'fullscreen'  => 'yes',
             'title'       => 'Dust & Lead - 3D Wild West FPS',
             'container_id'=> 'dust-and-lead-' . uniqid(),
+            'mode'        => 'wordpress', // 'wordpress' routes through WP template_redirect, 'static' uses direct HTML
         ), $atts, 'dust_and_lead_fps');
 
         wp_enqueue_style('dust-and-lead-css');
         wp_enqueue_script('dust-and-lead-embed-js');
 
-        $game_url = DUST_AND_LEAD_PLUGIN_URL . 'game/index.html';
-        $game_url = add_query_arg(array(
-            'difficulty' => sanitize_text_field($a['difficulty']),
-            'sound'      => sanitize_text_field($a['sound']),
-        ), $game_url);
+        if ($a['mode'] === 'static') {
+            $game_url = DUST_AND_LEAD_PLUGIN_URL . 'game/index.html';
+        } else {
+            // WordPress-routed URL: works reliably on every host without 404 issues
+            $game_url = add_query_arg(array(
+                'dust_and_lead_game' => '1',
+                'difficulty'         => sanitize_text_field($a['difficulty']),
+                'sound'              => sanitize_text_field($a['sound']),
+            ), home_url('/'));
+        }
 
         ob_start();
         ?>
@@ -186,15 +194,29 @@ class DustAndLeadFPS {
         return $vars;
     }
 
-    public function template_redirect_game($template) {
-        if (get_query_var('dust_and_lead_game')) {
+    public function handle_game_request() {
+        if ((isset($_GET['dust_and_lead_game']) && $_GET['dust_and_lead_game'] == '1') || get_query_var('dust_and_lead_game')) {
             $game_file = DUST_AND_LEAD_PLUGIN_DIR . 'game/index.html';
             if (file_exists($game_file)) {
-                // Serve full viewport without theme headers/footers
                 header('Content-Type: text/html; charset=utf-8');
-                readfile($game_file);
+                header('X-Frame-Options: SAMEORIGIN');
+                $html = file_get_contents($game_file);
+                // Inject full URL for bundled assets so no relative path resolution fails
+                $assets_url = DUST_AND_LEAD_PLUGIN_URL . 'game/assets/';
+                $html = str_replace('./assets/', $assets_url, $html);
+                $html = str_replace('src="assets/', 'src="' . $assets_url, $html);
+                $html = str_replace('href="assets/', 'href="' . $assets_url, $html);
+                echo $html;
                 exit;
+            } else {
+                wp_die(__('Game asset bundle missing in dust-and-lead-fps/game. Please reinstall the plugin.', 'dust-and-lead-fps'));
             }
+        }
+    }
+
+    public function template_redirect_game($template) {
+        if (get_query_var('dust_and_lead_game')) {
+            $this->handle_game_request();
         }
         return $template;
     }
