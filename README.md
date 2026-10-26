@@ -4,7 +4,7 @@
 [![PHP 7.4+](https://img.shields.io/badge/PHP-7.4%2B-purple.svg)](https://php.net)
 [![Three.js](https://img.shields.io/badge/Three.js-r160%2B-black.svg)](https://threejs.org)
 [![Cannon-es](https://img.shields.io/badge/Physics-Cannon--es-orange.svg)](https://github.com/pmndrs/cannon-es)
-[![License: GPL-2.0](https://img.shields.io/badge/License-GPL%202.0-green.svg)](http://www.gnu.org/licenses/gpl-2.0.txt)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 **Dust & Lead** is an action-packed 3D first-person shooter set in the dusty frontier town of **Dusty Creek**, powered by **Three.js** and the **Cannon-es** rigid-body physics engine.
 
@@ -233,6 +233,14 @@ cd wordpress-plugin && python3 -c "import shutil; shutil.make_archive('dust-and-
 
 ---
 
-## 📜 License
+## 📜 Lisenssi & Kaupallinen Julkaisu (License & FAQ)
 
-This project is licensed under the **GNU General Public License v2.0 or later (GPL-2.0+)**.
+Tämä projekti on lisensoitu **[MIT-lisenssillä](LICENSE)** (Copyright © 2026 Matti Kiviharju).
+
+MIT-lisenssi antaa täyden vapauden käyttää, muokata, sulkea lähdekoodi, uudelleenbrändätä ja myydä peliä ilman rojalteja.
+
+Katso kattava opas ja usein kysytyt kysymykset pelin kaupallistamiseen ja mobiilikauppoihin:
+📖 **[MIT-Lisenssi & FAQ (Apple App Store, Google Play, Kaupallistaminen)](LICENSE_FAQ.md)**
+- **Apple App Store**: Täysin yhteensopiva (ei GPL-ristiriitoja Applen EULA:n kanssa), ohjeet Capacitor/WKWebView-paketointiin ja attribuutioon.
+- **Google Play**: Täysin yhteensopiva, ohjeet `.aab`-paketointiin ja In-App Purchase / mainosintegraatioihin.
+- **Kaupallinen käyttö**: Vapaa myynti, suljetun lähdekoodin laajennukset ja rojalttivapaus.

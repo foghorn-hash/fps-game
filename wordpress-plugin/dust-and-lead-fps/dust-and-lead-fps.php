@@ -6,8 +6,8 @@
  * Version:           1.0.0
  * Author:            Matti Kiviharju
  * Author URI:        https://ais-pre-ruptlmt33jwkbwccyp54dl-421769122930.europe-west2.run.app
- * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * License:           MIT
+ * License URI:       https://opensource.org/licenses/MIT
  * Text Domain:       dust-and-lead-fps
  * Domain Path:       /languages
  */
